@@ -1,3 +1,15 @@
+<!--
+  ~ Created by Mikel Calvo on 10/18/19 1:54 PM
+  ~ Last modified 10/18/19 12:55 PM
+  -->
+
 <resources>
-    <string name="app_name">Sample</string>
+    <string name="app_name">QuickCamera</string>
+
+    <string name="launchCamera">Launch Camera</string>
+    <string name="editPicture">Edit Picture</string>
+    <string name="resultTitle">Result</string>
+    <string name="madeBy">Created by <a href="http://MikelCalvo.net/">Mikel Calvo</a></string>
+
+    <string name="picturePreviewTitle">Picture Taken</string>
 </resources>

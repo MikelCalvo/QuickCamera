@@ -1,7 +1,12 @@
+/*
+ * Created by Mikel Calvo on 10/18/19 10:57 PM
+ * Last modified 10/18/19 12:55 PM
+ */
+
 package mikelcalvo.net.quickcamera.sample
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
