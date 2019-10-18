@@ -1,0 +1,2 @@
+include ':app', ':QuickCamera'
+rootProject.name='Sample'
