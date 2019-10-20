@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?><resources>
+    <string name="app_name">QuickCamera</string>
+    <string name="changePicture">Cambiar Foto</string>
+    <string name="resultTitle">Resultado</string>
+    <string name="madeBy">Creado por <a href="http://MikelCalvo.net/">Mikel Calvo</a></string>
+    <string name="launchCamera">Iniciar Cámara</string>
+</resources>

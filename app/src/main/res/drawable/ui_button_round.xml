@@ -10,5 +10,5 @@
         android:topLeftRadius="30dp"
         android:topRightRadius="30dp"/>
 
-    <stroke android:width="2dp" android:color="#2962FF" />
+    <stroke android:width="2dp" android:color="@color/colorPrimary" />
 </shape>
