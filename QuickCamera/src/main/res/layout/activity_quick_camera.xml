@@ -1,8 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/quickCameraParent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".QuickCamera">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/quickCameraToolbar"
+        android:layout_width="0dp"
+        android:layout_height="?android:attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.otaliastudios.cameraview.CameraView
+        android:id="@+id/quickCameraView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cameraFacing="back"
+        app:cameraFlash="auto"
+        app:cameraHdr="on"
+        app:cameraMode="picture"
+        app:cameraWhiteBalance="auto"
+        app:cameraAudio="off"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quickCameraToolbar" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/quickCameraLeftGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.30" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/quickCameraRightGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.70" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/quickCameraMiddleGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/quickCameraBottomGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <ImageView
+        android:id="@+id/quickCameraFlashController"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:elevation="20dp"
+        android:src="@drawable/ic_flash_off"
+        app:layout_constraintBottom_toBottomOf="@+id/quickCameraActionController"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toStartOf="@+id/quickCameraLeftGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/quickCameraActionController" />
+
+    <ImageView
+        android:id="@+id/quickCameraActionController"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        android:elevation="20dp"
+        android:src="@drawable/ic_camera_action"
+        app:layout_constraintBottom_toTopOf="@+id/quickCameraBottomGuideline"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toStartOf="@+id/quickCameraRightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/quickCameraLeftGuideline"
+        app:layout_constraintTop_toTopOf="@+id/quickCameraMiddleGuideline" />
+
+    <ImageView
+        android:id="@+id/quickCameraChangeController"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:elevation="20dp"
+        android:src="@drawable/ic_camera_switch"
+        app:layout_constraintBottom_toBottomOf="@+id/quickCameraActionController"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/quickCameraRightGuideline"
+        app:layout_constraintTop_toTopOf="@+id/quickCameraActionController" />
 </androidx.constraintlayout.widget.ConstraintLayout>

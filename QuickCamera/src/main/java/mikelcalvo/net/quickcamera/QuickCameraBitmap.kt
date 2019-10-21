@@ -1,15 +1,3 @@
-/*
- * Last Modified by Mikel Calvo on 10/20/19 3:10 AM
- */
-
-/*
- * Last Modified by Mikel Calvo on 10/20/19 3:09 AM
- */
-
-/*
- * Last Modified by Mikel Calvo on 10/20/19 3:06 AM
- */
-
 package mikelcalvo.net.quickcamera
 
 import android.graphics.Bitmap
