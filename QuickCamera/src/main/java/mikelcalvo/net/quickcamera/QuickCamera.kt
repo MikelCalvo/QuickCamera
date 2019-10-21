@@ -1,7 +1,5 @@
 package mikelcalvo.net.quickcamera
 
-import android.content.Context
-import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Bitmap.CompressFormat
 import android.graphics.BitmapFactory
@@ -37,13 +35,13 @@ class QuickCamera : AppCompatActivity() {
          */
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.title = QuickCameraSetup.cameraToolbarTitle
+        supportActionBar?.title = QuickCameraSetup().cameraToolbarTitle
 
 
         /**
          * Let's set the configuration
          */
-        when(QuickCameraSetup.cameraFlash){
+        when(QuickCameraSetup().cameraFlash){
             "on" -> {
                 mFlashState = 0
                 quickCameraFlashController.setImageDrawable(resources.getDrawable(R.drawable.ic_flash_on, theme))
@@ -66,19 +64,19 @@ class QuickCamera : AppCompatActivity() {
             }
         }
 
-        when(QuickCameraSetup.cameraWhiteBalance){
+        when(QuickCameraSetup().cameraWhiteBalance){
             "auto" -> quickCameraView.whiteBalance = WhiteBalance.AUTO
             "incandescent" -> quickCameraView.whiteBalance = WhiteBalance.INCANDESCENT
             "daylight" -> quickCameraView.whiteBalance = WhiteBalance.DAYLIGHT
             "cloudy" -> quickCameraView.whiteBalance = WhiteBalance.CLOUDY
         }
 
-        when(QuickCameraSetup.cameraHDR){
+        when(QuickCameraSetup().cameraHDR){
             "on" -> quickCameraView.hdr = Hdr.ON
             "off" -> quickCameraView.hdr = Hdr.OFF
         }
 
-        when(QuickCameraSetup.cameraSize){
+        when(QuickCameraSetup().cameraSize){
             "full" -> {
                 mConstraintSet.connect(quickCameraView.id, ConstraintSet.TOP,
                     quickCameraToolbar.id, ConstraintSet.BOTTOM)
@@ -109,9 +107,9 @@ class QuickCamera : AppCompatActivity() {
                     //TODO: ADD COMPRESSION
 
                     var mBitmap = it!!
-                    if(QuickCameraSetup.pictureQualityPercentage in 1..99){
+                    if(QuickCameraSetup().pictureQualityPercentage in 1..99){
                         val byteArrayOutputStream = ByteArrayOutputStream()
-                        it.compress(CompressFormat.JPEG, QuickCameraSetup.pictureQualityPercentage, byteArrayOutputStream)
+                        it.compress(CompressFormat.JPEG, QuickCameraSetup().pictureQualityPercentage, byteArrayOutputStream)
                         mBitmap = BitmapFactory.decodeByteArray(byteArrayOutputStream.toByteArray(), 0, byteArrayOutputStream.toByteArray().size)
                     }
 
@@ -201,23 +199,5 @@ class QuickCamera : AppCompatActivity() {
         canvas.drawBitmap(srcBmp, ((dim - srcBmp.width) / 2).toFloat(), ((dim - srcBmp.height) / 2).toFloat(), null)
 
         return dstBmp
-    }
-}
-
-object QuickCameraSetup{
-
-    /**
-     * Object to store the user selected configuration params
-     */
-
-    var cameraFlash: String = "off"
-    var cameraWhiteBalance: String = "on"
-    var cameraHDR: String = "on"
-    var cameraSize: String = "full"
-    var cameraToolbarTitle: String = "Camera"
-    var pictureQualityPercentage: Int = 100
-
-    @JvmStatic fun launch(context: Context){
-        context.startActivity(Intent(context, QuickCamera::class.java))
     }
 }
