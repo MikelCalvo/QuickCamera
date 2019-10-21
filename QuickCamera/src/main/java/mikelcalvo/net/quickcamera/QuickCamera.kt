@@ -2,26 +2,23 @@ package mikelcalvo.net.quickcamera
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Bitmap.CompressFormat
+import android.graphics.BitmapFactory
+import android.graphics.Canvas
+import android.graphics.Color
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
-import com.otaliastudios.cameraview.controls.Flash
-import kotlinx.android.synthetic.main.activity_quick_camera.*
 import androidx.constraintlayout.widget.ConstraintSet
-import com.otaliastudios.cameraview.*
+import com.otaliastudios.cameraview.CameraListener
+import com.otaliastudios.cameraview.PictureResult
+import com.otaliastudios.cameraview.controls.Flash
 import com.otaliastudios.cameraview.controls.Hdr
 import com.otaliastudios.cameraview.controls.WhiteBalance
-import com.otaliastudios.cameraview.size.AspectRatio
-import com.otaliastudios.cameraview.size.SizeSelectors
-import android.opengl.ETC1.getHeight
-import android.opengl.ETC1.getWidth
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Color
-
-
-
+import kotlinx.android.synthetic.main.activity_quick_camera.*
+import java.io.ByteArrayOutputStream
 
 
 class QuickCamera : AppCompatActivity() {
@@ -110,11 +107,20 @@ class QuickCamera : AppCompatActivity() {
             override fun onPictureTaken(result: PictureResult) {
                 result.toBitmap {
                     //TODO: ADD COMPRESSION
+
+                    var mBitmap = it!!
+                    if(QuickCameraSetup.pictureQualityPercentage in 1..99){
+                        val byteArrayOutputStream = ByteArrayOutputStream()
+                        it.compress(CompressFormat.JPEG, QuickCameraSetup.pictureQualityPercentage, byteArrayOutputStream)
+                        mBitmap = BitmapFactory.decodeByteArray(byteArrayOutputStream.toByteArray(), 0, byteArrayOutputStream.toByteArray().size)
+                    }
+
                     if(mSquaredPicture){
-                        QuickCameraBitmap.setImage(createSquaredBitmap(it!!))
+                        QuickCameraBitmap.setImage(createSquaredBitmap(mBitmap))
                     }else{
                         QuickCameraBitmap.setImage(it)
                     }
+
                     finish()
                 }
                 super.onPictureTaken(result)
@@ -211,7 +217,7 @@ object QuickCameraSetup{
     var cameraToolbarTitle: String = "Camera"
     var pictureQualityPercentage: Int = 100
 
-    fun launch(context: Context){
+    @JvmStatic fun launch(context: Context){
         context.startActivity(Intent(context, QuickCamera::class.java))
     }
 }

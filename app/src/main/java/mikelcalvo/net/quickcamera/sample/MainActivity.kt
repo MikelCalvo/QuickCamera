@@ -9,11 +9,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import mikelcalvo.net.quickcamera.QuickCameraBitmap
 import mikelcalvo.net.quickcamera.QuickCameraSetup
 
-
-
 class MainActivity : AppCompatActivity() {
 
-    var cameraOnResume: Boolean = false
+    private var cameraOnResume: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
