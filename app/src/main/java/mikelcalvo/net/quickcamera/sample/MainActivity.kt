@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         QuickCameraSetup().cameraFlash = "auto"
         QuickCameraSetup().cameraWhiteBalance = "auto"
         QuickCameraSetup().cameraHDR = "on"
-        QuickCameraSetup().cameraSize = "full"
+        QuickCameraSetup().cameraSize = "square"
         QuickCameraSetup().pictureQualityPercentage = 70
 
         launchCamBtn.setOnClickListener {

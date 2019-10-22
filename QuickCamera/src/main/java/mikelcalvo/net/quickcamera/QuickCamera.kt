@@ -28,7 +28,6 @@ class QuickCamera : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quick_camera)
-        setSupportActionBar(quickCameraToolbar)
 
         /**
          * Return Arrow to Action Bar & custom title
@@ -79,7 +78,7 @@ class QuickCamera : AppCompatActivity() {
         when(QuickCameraSetup().cameraSize){
             "full" -> {
                 mConstraintSet.connect(quickCameraView.id, ConstraintSet.TOP,
-                    quickCameraToolbar.id, ConstraintSet.BOTTOM)
+                    quickCameraParent.id, ConstraintSet.TOP)
                 mConstraintSet.connect(quickCameraView.id, ConstraintSet.START,
                     quickCameraParent.id, ConstraintSet.START)
                 mConstraintSet.connect(quickCameraView.id, ConstraintSet.END,
@@ -151,12 +150,9 @@ class QuickCamera : AppCompatActivity() {
     /**
      * If they press the toolbar back button the camera is closed
      */
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.home -> finish()
-            else -> super.onOptionsItemSelected(item)
-        }
-        return super.onOptionsItemSelected(item)
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return super.onSupportNavigateUp()
     }
 
     private fun toggleFlash(){
