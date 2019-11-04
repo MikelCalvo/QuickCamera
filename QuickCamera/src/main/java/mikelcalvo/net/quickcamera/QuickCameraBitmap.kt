@@ -5,17 +5,17 @@ import java.lang.ref.WeakReference
 
 object QuickCameraBitmap {
 
-    private var savedImage: WeakReference<Bitmap>? = null
+    @JvmStatic private var savedImage: WeakReference<Bitmap>? = null
 
-    fun setImage(image: Bitmap?) {
+    @JvmStatic fun setImage(image: Bitmap?) {
         savedImage = if (image != null) WeakReference(image) else null
     }
 
-    fun getImage(): Bitmap? {
+    @JvmStatic fun getImage(): Bitmap? {
         return savedImage?.get()
     }
 
-    fun dispose() {
+    @JvmStatic fun dispose() {
         setImage(null)
     }
 }

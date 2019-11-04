@@ -19,15 +19,15 @@ class MainActivity : AppCompatActivity() {
 
         creditsText.movementMethod = LinkMovementMethod.getInstance()
 
-        QuickCameraSetup().cameraFlash = "auto"
-        QuickCameraSetup().cameraWhiteBalance = "auto"
-        QuickCameraSetup().cameraHDR = "on"
-        QuickCameraSetup().cameraSize = "square"
-        QuickCameraSetup().pictureQualityPercentage = 70
+        QuickCameraSetup.cameraFlash = "auto"
+        QuickCameraSetup.cameraWhiteBalance = "auto"
+        QuickCameraSetup.cameraHDR = "on"
+        QuickCameraSetup.cameraSize = "square"
+        QuickCameraSetup.pictureQualityPercentage = 70
 
         launchCamBtn.setOnClickListener {
             cameraOnResume = true
-            QuickCameraSetup().launch(this)
+            QuickCameraSetup.launch(this)
         }
 
 
